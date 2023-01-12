@@ -3,7 +3,7 @@ package transport;
 import java.lang.annotation.Native;
 import java.util.Calendar;
 
-public class Car {
+public class Car extends Transport {
     public class Key {
         private boolean intremoteEngineStart;
         private boolean engineStart;
@@ -24,13 +24,7 @@ public class Car {
 
 
     }
-        private final String brand;
-        private final String model;
         private double engineVolume;
-        private String color;
-        private final int year;
-        private  final String country;
-
         private String transmission;
         private final String bodyType;
         private int registrationNumber;
@@ -38,8 +32,9 @@ public class Car {
         private int autoRubberWinter;
         private Key key;
 
-        public Car(String brand, String model, double engineVolume, String color, int year, String country,
-                   String transmission, String bodyType, int registrationNumber, int numberOfSeats) {
+        public Car  (String brand, String model, double engineVolume, String color, int year, String country,
+                   String transmission, String bodyType, int registrationNumber, int numberOfSeats, int maxSpeed) {
+            super(brand,model,year,color,country,maxSpeed);
             if (transmission == null) { transmission = "MKPP";}
             this.transmission = transmission;
 
@@ -64,14 +59,10 @@ public class Car {
             this.engineVolume = engineVolume;
 
           if (color == null) {color = "Белый";}
-            this.color =color;
+            this.setColor(color);
 
           if (year <=0) {year = 2000; }
           this.year = year;}
-    public String getBrand() { return brand;}
-    public String getModel() {return model;}
-    public int getYear() {return year;}
-    public String getCountry() {return country;}
     public String getBodyType() {return bodyType;}
     public int getNumberOfSeats() {return numberOfSeats;}
     public double getEngineVolume() {return engineVolume;}
@@ -79,8 +70,7 @@ public class Car {
     public int getRegistrationNumber() { return registrationNumber;}
     public void setRegistrationNumber(int registrationNumber) { this.registrationNumber = registrationNumber;}
     public void setTransmission(String transmission) {this.transmission = transmission;}
-    public String getColor() {return color;}
-    public void setColor(String color) {this.color = color;}
+
     public void setEngineVolume(double engineVolume) {this.engineVolume = engineVolume;}
 
 
